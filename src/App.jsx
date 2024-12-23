@@ -1,3 +1,4 @@
+
 import "./globals.css";
 import { useState, lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
@@ -12,6 +13,7 @@ const Class = lazy(() => import("./root/Pages/Class"));
 const Classwork = lazy(() => import("./root/Pages/Classwork"));
 const Pepole = lazy(() => import("./root/Pages/Pepole"));
 const Stream = lazy(() => import("./root/Pages/Stream"));
+const NotFound = lazy(() => import("./root/Pages/NotFound"));
 
 const App = () => {
   const [load, setLoad] = useState(false);
@@ -34,6 +36,7 @@ const App = () => {
               <Route element={<SignIn />} path="/sign-in" />
               <Route element={<SignUp />} path="/sign-up" />
             </Route>
+            <Route path="*" element={<NotFound/>} /> 
           </Routes>
         </Suspense>
       </main>

@@ -44,8 +44,8 @@ const Top = () => {
   }
 
   const handelCreate = async () => {
+    setIsLoading(true)
     await createClass(createRoom).then(async (e) => {
-      setIsLoading(true)
       setClasss(e)
       navigate(`/c/${e}`)
       setCreate(false)
@@ -173,7 +173,7 @@ const Top = () => {
               className='shad-input'
             />
             <div className='w-full flex justify-end gap-3' >
-              <button className='text-dark-1' onClick={handelCreate} >
+              <button disabled={isLoading} className='text-dark-1' onClick={handelCreate} >
                 {isLoading ? "creating.." : "create"}
               </button>
             </div>
