@@ -12,6 +12,7 @@ const SignIn = () => {
   const handelSubmit = async () => {
     setIsLoading(true)
     const user = await googleSignIn()
+    console.log(user)
     setIsLoading(false)
     localStorage.setItem("GoogleClass",user.uid)
     navigate("/")
