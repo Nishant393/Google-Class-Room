@@ -10,18 +10,22 @@ export const googleSignIn = async () => {
         await signInWithPopup(auth, provider)
             .then(async (result) => {
                 user = result.user
+                console.log(user)
                 await saveToDb(result.user)
             }).catch((error) => {
+                console.log(error)
                 return error
             });
         return user;
     } catch (error) {
+        console.log(error)
         return (error)
     }
 }
 
 export const saveToDb = async (result) => {
     try {
+        console.log(result)
         const userCollection = collection(db, "users")
         const q = query(userCollection, where("email", "==", result.email))
         const queryData = await getDocs(q)
